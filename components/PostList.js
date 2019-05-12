@@ -2,9 +2,9 @@ import { Query } from "react-apollo";
 import gql from "graphql-tag";
 import ErrorMessage from "./ErrorMessage";
 
-export const allPostsQuery = gql`
-  query AllMealsQuery {
-    allSingleMeals(lang: "en-gb") {
+export const allArticlesQuery = gql`
+  query AllArticles {
+    allSingleArticles(lang: "en-gb") {
       edges {
         node {
           _meta {
@@ -15,14 +15,15 @@ export const allPostsQuery = gql`
     }
   }
 `;
-export const allPostsQueryVars = {
-  skip: 0,
-  first: 10
-};
+
+// export const allArticlesQueryVars = {
+//   skip: 0,
+//   first: 10
+// };
 
 export default function PostList() {
   return (
-    <Query query={allPostsQuery}>
+    <Query query={allArticlesQuery}>
       {({ loading, error, data }) => {
         console.log(data);
         if (error) return <ErrorMessage message="Error loading query." />;
